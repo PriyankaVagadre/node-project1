@@ -2,8 +2,14 @@ const express = require('express');
 
 const students = require('./MOCK_DATA.json');
 
+const fs = require('fs');
+
+
 const app = express();
 const port = 3000;
+
+app.use(express.urlencoded({extended:false}))
+
 
 //Routes
 
@@ -22,7 +28,15 @@ app.get('/api/students', (req,res)=>{
 
 app.post('/api/students', (req,res)=>{
   //POST 1 student
-  return res.json({status: 'POST Pending'})
+  const student = req.body;
+
+  students.push({...student, id: students.length+1});
+
+  fs.writeFile('./MOCK_DATA.json', JSON.stringify(students), (err,res)=>{
+    console.log(res)
+  })
+
+  return res.json({status: 'success', studentId: students.length })
 })
 
 // app.get('/api/students/:id', (req,res)=>{
