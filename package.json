@@ -4,7 +4,8 @@
   "description": "practice project",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/PriyankaVagadre/node-project1/issues"
   },
-  "homepage": "https://github.com/PriyankaVagadre/node-project1#readme"
+  "homepage": "https://github.com/PriyankaVagadre/node-project1#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
