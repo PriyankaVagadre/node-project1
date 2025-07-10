@@ -1,0 +1,11 @@
+Create Student List
+
+GET/students // All all students
+
+GET/student/1 // Get student with ID 1
+
+PATCH/student/1 // update student with ID 1
+
+POST/students // add student in the List
+
+DELETE/students/1 //delete student with ID 1
