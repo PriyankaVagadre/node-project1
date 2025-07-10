@@ -1,8 +1,10 @@
 Create Student List
 
-GET/students // All all students
+GET/students // All all students --Done
+-- '/api/students'
 
-GET/student/1 // Get student with ID 1
+GET/student/1 // Get student with ID 1 -- Done
+-- '/api/students/:id'
 
 PATCH/student/1 // update student with ID 1
 
