@@ -65,11 +65,22 @@ app.route('/api/students/:id')
   })
 .patch((req,res)=>{
     //PATCH 1 student
-    return res.json({status: 'PATCH Pending'})
+    const id = Number(req.params.id);
+    const body = req.body;
+    let studentArr = students.map(item => item.id === id ? body : item);
+    fs.writeFile('./MOCK_DATA.json', JSON.stringify(studentArr), () => {
+      res.json({status: 'PATCH', id: id});
+    });
   })
 .delete((req,res)=>{
     //DELETE 1 student
-    return res.json({status: 'DELETE Pending'})
+    const id = Number(req.params.id)
+    let studentArr = students.filter(student=> student.id !== id);
+
+    fs.writeFile('./MOCK_DATA.json', JSON.stringify(studentArr), () => {
+      // return res.json({status: 'DELETED', id: id})
+    })
+    
   })
 
 app.listen(port, () => {
