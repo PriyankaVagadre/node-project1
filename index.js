@@ -10,6 +10,17 @@ const port = 3000;
 
 app.use(express.urlencoded({extended:false}))
 
+//middleware
+
+app.use((req,res,next)=>{
+ console.log('Request received at:', new Date().toLocaleString());
+ next();
+})
+
+app.use((req,res,next)=>{
+  console.log('Request method: 2', req.method);
+  next();
+})
 
 //Routes
 
