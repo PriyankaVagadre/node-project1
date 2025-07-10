@@ -26,7 +26,20 @@ app.get('/api/students/:id', (req,res)=>{
   return res.json(student);
 })
 
+app.post('/api/students', (req,res)=>{
+  //POST 1 student
+  return res.json({status: 'POST Pending'})
+})
 
+app.patch('/api/students/:id', (req,res)=>{
+  //PATCH 1 student
+  return res.json({status: 'PATCH Pending'})
+})
+
+app.post('/api/students/:id', (req,res)=>{
+  //DELETE 1 student
+  return res.json({status: 'DELETE Pending'})
+})
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
