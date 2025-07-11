@@ -22,6 +22,16 @@ app.use((req,res,next)=>{
   next();
 })
 
+//add a middleware to maintain a log
+
+app.use((req,res,next) =>{
+
+  fs.appendFile('log.txt', `Time ${Date.now()} Method ${req.method}`, (err, data)=>{
+   console.log(`Time ${Date.now()} Method ${req.method}\n`);
+   next();
+  })
+})
+
 //Routes
 
 app.get('/students', (req,res)=>{
