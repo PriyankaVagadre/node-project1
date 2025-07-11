@@ -59,7 +59,7 @@ app.post('/api/students', (req,res)=>{
     console.log(res)
   })
 
-  return res.json({status: 'success', studentId: students.length })
+  return res.status(201).json({status: 'success', studentId: students.length })
 })
 
 // app.get('/api/students/:id', (req,res)=>{
