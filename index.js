@@ -84,6 +84,9 @@ app.route('/api/students/:id')
 .get((req,res)=>{
     const id = Number(req.params.id);
     const student = students.find((student)=> student.id === id);
+    if(!student){
+      return res.status(404).json({error: 'Student not found'})
+    }
     return res.json(student);
   })
 .patch((req,res)=>{
