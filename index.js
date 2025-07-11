@@ -44,13 +44,15 @@ app.get('/students', (req,res)=>{
 })
 
 app.get('/api/students', (req,res)=>{
+  console.log(req.headers)
+  res.setHeader('x-myHeader','CustomHeader')
   return res.json(students);
 })
 
 app.post('/api/students', (req,res)=>{
   //POST 1 student
   const student = req.body;
-
+ 
   students.push({...student, id: students.length+1});
 
   fs.writeFile('./MOCK_DATA.json', JSON.stringify(students), (err,res)=>{

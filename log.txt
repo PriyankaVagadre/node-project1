@@ -1,2 +1,7 @@
 Time 1752209136204 Method GETTime 1752209138238 Method GETTime 1752209181305 Method GET
 Time 1752209342010 Method GET URL /api/students/1001
+Time 1752248579289 Method GET URL /api/students/1001
+Time 1752248587046 Method GET URL /api/students
+Time 1752248637209 Method GET URL /api/students
+Time 1752248659818 Method GET URL /api/students
+Time 1752249297079 Method GET URL /api/students
