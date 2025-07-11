@@ -26,7 +26,7 @@ app.use((req,res,next)=>{
 
 app.use((req,res,next) =>{
 
-  fs.appendFile('log.txt', `Time ${Date.now()} Method ${req.method}`, (err, data)=>{
+  fs.appendFile('log.txt', `\nTime ${Date.now()} Method ${req.method} URL ${req.url}`, (err, data)=>{
    console.log(`Time ${Date.now()} Method ${req.method}\n`);
    next();
   })
