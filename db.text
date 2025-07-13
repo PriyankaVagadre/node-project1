@@ -4,3 +4,10 @@ Schema - Create Schema
   Schema - Model 
     with the Models we perform CRUD operations
 
+
+//db Commands
+
+show dbs
+show collections
+use db
+db.studentmodel.find({})
