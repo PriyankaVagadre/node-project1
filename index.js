@@ -1,7 +1,6 @@
 const express = require('express');
-const mongoose = require('mongoose');
 
-const students = require('./MOCK_DATA.json');
+const {connectMongoDB} = require('./connection')
 
 const studentRouter = require('./routers/student')
 
@@ -9,9 +8,27 @@ const app = express();
 const port = 3000;
 
 //connect MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/students')
-.then(()=> console.log('Mongo Connected'))
-.catch((err)=> console.log('Mongo Error'))
+connectMongoDB('mongodb://127.0.0.1:27017/students')
+
+app.use((req,res,next)=>{
+  console.log('Request received at:', new Date().toLocaleString());
+  next();
+ })
+ 
+ app.use((req,res,next)=>{
+   console.log('Request method: 2', req.method);
+   next();
+ })
+ 
+ //add a middleware to maintain a log
+ 
+//  app.use((req,res,next) =>{
+ 
+//    fs.appendFile('log.txt', `\nTime ${Date.now()} Method ${req.method} URL ${req.url}`, (err, data)=>{
+//     console.log(`Time ${Date.now()} Method ${req.method}\n`);
+//     next();
+//    })
+//  })
 
 app.use('/students', studentRouter)
 
