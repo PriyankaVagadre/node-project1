@@ -25,3 +25,8 @@ Time 1752394900985 Method GET URL /api/students
 Time 1752394914721 Method PATCH URL /api/students/6873619dd35db097d8273f0a
 Time 1752394930443 Method PATCH URL /api/students/6873619dd35db097d8273f0a
 Time 1752394935304 Method GET URL /api/students
+Time 1752395131567 Method DELETE URL /api/students/6873619dd35db097d8273f0a
+Time 1752395135643 Method GET URL /api/students
+Time 1752395141808 Method POST URL /api/students
+Time 1752395158317 Method POST URL /api/students
+Time 1752395161558 Method GET URL /api/students

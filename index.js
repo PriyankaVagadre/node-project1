@@ -154,15 +154,16 @@ app.route('/api/students/:id')
     const updatedStudent = await Student.findByIdAndUpdate(req.params.id, result)
     return res.status(203).json({status: 'updated Value', response: updatedStudent})
   })
-.delete((req,res)=>{
+.delete(async(req,res)=>{
     //DELETE 1 student
-    const id = Number(req.params.id)
-    let studentArr = students.filter(student=> student.id !== id);
+    // const id = Number(req.params.id)
+    // let studentArr = students.filter(student=> student.id !== id);
 
-    fs.writeFile('./MOCK_DATA.json', JSON.stringify(studentArr), () => {
-      // return res.json({status: 'DELETED', id: id})
-    })
-    
+    // fs.writeFile('./MOCK_DATA.json', JSON.stringify(studentArr), () => {
+    //   // return res.json({status: 'DELETED', id: id})
+    // })
+    const deletedId = await Student.findByIdAndDelete(req.params.id);
+    return res.status(200).json({status:'Deleted', deletedId: deletedId})
   })
 
 app.listen(port, () => {
