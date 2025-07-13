@@ -33,7 +33,7 @@ const studentSchema = new mongoose.Schema({
 }) 
 
 //model
-const student = mongoose.model('StudentModel', studentSchema);
+const Student = mongoose.model('StudentModel', studentSchema);
 
 app.use(express.urlencoded({extended:false}))
 
@@ -76,17 +76,32 @@ app.get('/api/students', (req,res)=>{
   return res.json(students);
 })
 
-app.post('/api/students', (req,res)=>{
+app.post('/api/students', async (req,res)=>{
   //POST 1 student
   const student = req.body;
- 
-  students.push({...student, id: students.length+1});
 
-  fs.writeFile('./MOCK_DATA.json', JSON.stringify(students), (err,res)=>{
-    console.log(res)
+  if(!req.body || !req.body.firstName || !req.body.lastName || !req.body.email || !req.body.gender){
+    return res.status(400).json({status: 'ALL fields are required'})
+  }
+
+  const result = await Student.create({
+    firstName : req.body.firstName,
+    lastName : req.body.lastName,
+    email:req.body.email,
+    gender:req.body.gender
   })
 
-  return res.status(201).json({status: 'success', studentId: students.length })
+
+
+ 
+  // students.push({...student, id: students.length+1});
+
+  // fs.writeFile('./MOCK_DATA.json', JSON.stringify(students), (err,res)=>{
+  //   console.log(res)
+  // })
+
+  console.log('result', result)
+  return res.status(201).json({status: 'success'})
 })
 
 // app.get('/api/students/:id', (req,res)=>{
