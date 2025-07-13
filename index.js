@@ -136,14 +136,23 @@ app.route('/api/students/:id')
     const student = await Student.findById(req.params.id);
     return res.json(student);
   })
-.patch((req,res)=>{
+.patch(async (req,res)=>{
     //PATCH 1 student
-    const id = Number(req.params.id);
-    const body = req.body;
-    let studentArr = students.map(item => item.id === id ? body : item);
-    fs.writeFile('./MOCK_DATA.json', JSON.stringify(studentArr), () => {
-      res.json({status: 'PATCH', id: id});
-    });
+    // const id = Number(req.params.id);
+    // const body = req.body;
+    // let studentArr = students.map(item => item.id === id ? body : item);
+    // fs.writeFile('./MOCK_DATA.json', JSON.stringify(studentArr), () => {
+    //   res.json({status: 'PATCH', id: id});
+    // });
+    const result = {
+      firstName : req.body.firstName,
+      lastName : req.body.lastName,
+      email:req.body.email,
+      gender:req.body.gender
+    };
+
+    const updatedStudent = await Student.findByIdAndUpdate(req.params.id, result)
+    return res.status(203).json({status: 'updated Value', response: updatedStudent})
   })
 .delete((req,res)=>{
     //DELETE 1 student
