@@ -74,9 +74,9 @@ app.get('/api/students', async (req,res)=>{
   console.log(req.headers)
   res.setHeader('x-myHeader','CustomHeader')
 
-const response = await Student.find({})
+  const response = await Student.find({})
 
-  return res.json(response);
+  return res.status(200).json(response);
 })
 
 app.post('/api/students', async (req,res)=>{
@@ -126,12 +126,14 @@ app.post('/api/students', async (req,res)=>{
 //group the top 3 method in one
 
 app.route('/api/students/:id')
-.get((req,res)=>{
-    const id = Number(req.params.id);
-    const student = students.find((student)=> student.id === id);
-    if(!student){
-      return res.status(404).json({error: 'Student not found'})
-    }
+.get(async (req,res)=>{
+    // const id = Number(req.params.id);
+    // const student = students.find((student)=> student.id === id);
+    // if(!student){
+    //   return res.status(404).json({error: 'Student not found'})
+    // }
+
+    const student = await Student.findById(req.params.id);
     return res.json(student);
   })
 .patch((req,res)=>{

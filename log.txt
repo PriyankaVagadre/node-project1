@@ -17,3 +17,5 @@ Time 1752392093319 Method POST URL /api/students
 Time 1752392236577 Method POST URL /api/students
 Time 1752392250890 Method POST URL /api/students
 Time 1752392418678 Method GET URL /api/students
+Time 1752394556897 Method GET URL /api/students/6873619dd35db097d8273f0a
+Time 1752394586698 Method GET URL /api/students/6873619dd35db097d8273f0a
