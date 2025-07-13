@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 
 const students = require('./MOCK_DATA.json');
 
+const Student = require('./models/student')
+
 const fs = require('fs');
 
 const app = express();
@@ -12,28 +14,6 @@ const port = 3000;
 mongoose.connect('mongodb://127.0.0.1:27017/students')
 .then(()=> console.log('Mongo Connected'))
 .catch((err)=> console.log('Mongo Error'))
-
-//Schema
-const studentSchema = new mongoose.Schema({
-  firstName :{
-    type: String,
-    required: true
-  },
-  lastName:{
-    type:String,
-  },
-  email:{
-    type: String,
-    required: true,
-    unique: true
-  },
-  gender:{
-    type: String,
-  }
-}, {timestamps:true}) 
-
-//model
-const Student = mongoose.model('StudentModel', studentSchema);
 
 app.use(express.urlencoded({extended:false}))
 
