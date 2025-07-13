@@ -5,9 +5,13 @@ const students = require('./MOCK_DATA.json');
 
 const fs = require('fs');
 
-
 const app = express();
 const port = 3000;
+
+//connect MongoDB
+mongoose.connect('mongodb://127.0.0.1:27017/students')
+.then(()=> console.log('Mongo Connected'))
+.catch((err)=> console.log('Mongo Error'))
 
 //Schema
 const studentSchema = new mongoose.Schema({
