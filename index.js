@@ -30,7 +30,7 @@ const studentSchema = new mongoose.Schema({
   gender:{
     type: String,
   }
-}) 
+}, {timestamps:true}) 
 
 //model
 const Student = mongoose.model('StudentModel', studentSchema);
