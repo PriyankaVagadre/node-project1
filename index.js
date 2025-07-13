@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 const students = require('./MOCK_DATA.json');
 
@@ -7,6 +8,28 @@ const fs = require('fs');
 
 const app = express();
 const port = 3000;
+
+//Schema
+const studentSchema = new mongoose.Schema({
+  firstName :{
+    type: String,
+    required: true
+  },
+  lastName:{
+    type:String,
+  },
+  email:{
+    type: String,
+    required: true,
+    unique: true
+  },
+  gender:{
+    type: String,
+  }
+}) 
+
+//model
+const student = mongoose.model('StudentModel', studentSchema);
 
 app.use(express.urlencoded({extended:false}))
 
