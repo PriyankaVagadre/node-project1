@@ -70,10 +70,13 @@ app.get('/students', (req,res)=>{
   return res.send(html)
 })
 
-app.get('/api/students', (req,res)=>{
+app.get('/api/students', async (req,res)=>{
   console.log(req.headers)
   res.setHeader('x-myHeader','CustomHeader')
-  return res.json(students);
+
+const response = await Student.find({})
+
+  return res.json(response);
 })
 
 app.post('/api/students', async (req,res)=>{
